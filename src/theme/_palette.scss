@@ -1,0 +1,44 @@
+@import '~@angular/material/theming';
+
+$md-mydata: (
+  50 : #e6e8f1,
+  100 : #c2c5dc,
+  200 : #999ec4,
+  300 : #7077ac,
+  400 : #515a9b,
+  500 : #323d89,
+  600 : #2d3781,
+  700 : #262f76,
+  800 : #1f276c,
+  900 : #131a59,
+  A100 : #929bff,
+  A200 : #5f6cff,
+  A400 : #2c3dff,
+  A700 : #1325ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+$mydata-primary: mat-palette($md-mydata, 700, 300, 900);
+$mydata-accent: mat-palette($md-mydata);
+$mydata-warn: mat-palette($md-mydata, A200);
+
+// create theme (use mat-dark-theme for themes with dark backgrounds)
+$mydata: mat-light-theme(
+    $mydata-primary,
+    $mydata-accent,
+    $mydata-warn
+);
