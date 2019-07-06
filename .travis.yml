@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - 10.16.0
+before_script:
+  - npm install -g @angular/cli
+script:
+  - ng lint
+  - npm run test-headless
+  - ng e2e
+  - ng build --prod
+deploy:
+  provider: s3
+  access_key_id: AKIA4C6ODJ7LXVEBWJHL
+  secret_access_key:
+    secure: alq8CUnwE8zgIG2ie4TndX/usUuPYkTHWKs8pYBGXvZ6cD7crVzsAPRR56FQbxSDWiicluqOmNeDAPolNX1GO89bJleg7sKIjgNYXIp0o+fxloRhLUEDN9ibXT3CwrGWbRuvcCiD2an384bIpUjCHmk5eJIRl+6ej0OJEnlHSKavNhJZYwiarp9blj6msE8d3+7vLjy3JmLrNqu9Hdi8EM/F8PSNrSMq2CBMl3CI4lUfB1ERCOJlR/C1wdoC1o33w9HA+rByFdRH7zf2oKe3eTQ2LeQvJ0z3Z4OSS+iUG+ovlnzGO+imI9P0c5CZqlkH/tycPl/m2gCiT0F+pvg+e534Y/UDQkPT44ZR5mhaUxdVFkWlg5IxA42BB8n1hRM5fe7bkg6N5HtNKnI6qDj41QqR5h2wH/94aBnJ9bzqyTAq+qJciEzztTS8M0BCMEHxkstlnhiAIxCg3uQ2+3oNgFw43yfr0lJp9NIKvz+huCv/3jPRWCqN/8fkRpee8ZGDB/dZ1qwRPuMGBCNlhNyI7OkSy9+rbZ3N1lA+pWukIl70opTHlNzRzMRtBKAgiDOsjYV12aMmF7e3JufKWRXFCf73eOWJTH+UkK9nZC3cROD4eilh95A8YuRD7s8sHaDHYE5bCKS17vQbNDGKVeiFXdTjnbyZDxR8CmggVR/4XyI=
+  bucket: mydata-web-webtree
+  skip_cleanup: true
+  region: eu-central-1
+  local_dir: dist/mydata-web
+  acl: public_read
+notifications:
+  slack:
+    secure: Keff3SyBZkZJ4CN063V9256q9666ldwyeNozQ1wsQPN5uN/VktvQkJr4lEg9ibp/Zj4kug7vHYSQmylgQTCPUiOD3l0NizxTrySy5f925tPIvk/7jDutzO3jeQoU0peY+nfJEsPaurZNDZDsMf8VwptVPfqMoe1HRXRVy2uP9jAAZ3ioyOWlRO/0XMNcJEFs1MXhxarx/EgcQ03CEhhcFhmj/OlWuRdRR9hCsmBA6r9FlHGnehYEZE4MPMQ2mnZDgVIZKlwwrG+73vzxERn0RBYq4cATrf8gug22X7JV24sXwV30MCocqP1UZGPgoZ2M3StE7HhNLTouGG10SZLoodJ5fLTn2zjfweRq8VJZaGh+XAYncIctKerD3ivNt5uIXIyz4GipEJH4MAsXQNhq5AxUkyN8LmwVm1gN3u4YkWMeAFZdOOKO0VOjlqMVraEXeJB9ejug4h+mBcdv07i3UWf4hKKxFvqFQCSTjNrjATiaSP4k2+koIEyw938DRBpBc6zrZawGKgBL6wWvJ6fXz0PAOHf2pWwcv43B1PDz7XrK/liKW5ev6U8JCv/80ebIBFOPyMY7FrMpxj66HhQBAxsH849ZlWlrq6UAZcVIp8ho74xk0a6QPtEN6do+WOYFzeyZ1JLoLAwh5eYu9+26WqTEAS+4wmaw3SAHO4Oj8bI=
