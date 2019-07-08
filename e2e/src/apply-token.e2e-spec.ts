@@ -6,7 +6,7 @@ describe('apply-token', () => {
   it('should save token to localstorage', () => {
     const token = 'someToken';
     browser.get(`${browser.baseUrl}/applyToken#token=${token}`)
-      .then(async () => expect(await browser.executeScript("return window.localStorage.getItem('token')")).toEqual(token))
+      .then(async () => expect(await browser.executeScript(`return window.localStorage.getItem('token')`)).toEqual(token));
   });
 
   afterEach(async () => {

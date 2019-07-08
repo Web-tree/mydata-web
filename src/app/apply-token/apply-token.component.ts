@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Route, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpParams} from '@angular/common/http';
 import {TokenService} from '../../_services/token.service';
 
@@ -22,7 +22,7 @@ export class ApplyTokenComponent implements OnInit {
       const params = new HttpParams({fromString: fragment});
       this.tokenService.saveToken(params.get('token'));
       this.router.navigate(['/']);
-    })
+    });
   }
 
 }
