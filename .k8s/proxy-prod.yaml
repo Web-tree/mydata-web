@@ -1,0 +1,31 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mydata-web-proxy
+  namespace: webtree
+spec:
+  ports:
+    - protocol: TCP
+      name: http
+      port: 80
+      targetPort: 80
+  type: ExternalName
+  externalName: mydata-web-webtree.s3-website.eu-central-1.amazonaws.com
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mydata-web
+  namespace: webtree
+  annotations:
+    traefik.ingress.kubernetes.io/preserve-host: "false"
+spec:
+  rules:
+    - host: mydata.webtree.org
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: mydata-web-proxy
+              servicePort: http
