@@ -7,6 +7,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule, MatToolbarModule} from '@angular/material';
 import {ApplyTokenComponent} from './apply-token/apply-token.component';
 import {TokenService} from '../_services/token.service';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import {TokenService} from '../_services/token.service';
     // angular
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [
     TokenService
