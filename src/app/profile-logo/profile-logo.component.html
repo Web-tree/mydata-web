@@ -3,6 +3,7 @@
     {{shortName}}
   </button>
   <mat-menu #profileLogoMenu='matMenu' class="profile-logo-menu">
+    <button disabled mat-menu-item>{{user.username}}</button>
     <button (click)="authService.logout()" mat-menu-item>Logout</button>
   </mat-menu>
 </div>

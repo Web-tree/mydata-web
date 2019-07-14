@@ -10,27 +10,29 @@ import {environment} from '../../environments/environment';
 })
 export class ProfileLogoComponent implements OnInit {
 
-  private user: User;
-  private shortName: string;
-  private loginUrl: string = environment.authUrl + '/login?returnUnion=mydata';
-  private registerUrl: string = environment.authUrl + '/register?returnUnion=mydata';
+  private user: User = {};
+  private username: string;
 
   constructor(
     public authService: AuthService
   ) {
+  }
+  private shortName: string;
+  private loginUrl: string = environment.authUrl + '/login?returnUnion=mydata';
+  private registerUrl: string = environment.authUrl + '/register?returnUnion=mydata';
+
+  static generateShortName(user: User): string {
+    return user.username.slice(0, 2).toUpperCase();
   }
 
   ngOnInit() {
     if (this.authService.isLoggedIn()) {
       this.authService.getUser().then(user => {
         this.user = user;
-        this.shortName = this.generateShortName(user);
+        this.username = user.username;
+        this.shortName = ProfileLogoComponent.generateShortName(user);
       });
     }
-  }
-
-  private generateShortName(user: User): string {
-    return user.username.slice(0, 2).toUpperCase();
   }
 
 }
