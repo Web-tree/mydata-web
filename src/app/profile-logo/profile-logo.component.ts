@@ -16,7 +16,7 @@ export class ProfileLogoComponent implements OnInit {
   private registerUrl: string = environment.authUrl + '/register?returnUnion=mydata';
 
   constructor(
-    private authService: AuthService
+    public authService: AuthService
   ) {
   }
 
