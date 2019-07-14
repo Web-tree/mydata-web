@@ -7,8 +7,8 @@ import {User} from '../_models/User';
 import {MatMenuModule} from '@angular/material';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import SpyObj = jasmine.SpyObj;
 import {environment} from '../../environments/environment';
+import SpyObj = jasmine.SpyObj;
 
 describe('ProfileLogoComponent', () => {
   let component: ProfileLogoComponent;
@@ -71,7 +71,6 @@ describe('ProfileLogoComponent', () => {
     beforeEach(() => {
       authService.isLoggedIn.and.callFake(() => true);
       authService.getUser.and.callFake(() => Promise.resolve<User>({username: 'someName'}));
-
       fixture.detectChanges();
       button = getProfileButton();
     });
@@ -90,7 +89,6 @@ describe('ProfileLogoComponent', () => {
 
     it('should show first two letters from user name in upper case', () => {
       fixture.whenStable().then(() => {
-        fixture.detectChanges();
         expect(button.textContent.trim()).toEqual('SO');
       });
     });
@@ -109,12 +107,16 @@ describe('ProfileLogoComponent', () => {
         expect(menu).toBeTruthy();
       });
 
+      xit('should show username on top of menu', () => {
+        const username = openMenu().query(By.css('.mat-menu-item:first-child'));
+        expect(username.nativeElement.textContent).toEqual('someName');
+      });
+
       describe('logout button', () => {
 
-        function getLogoutButton() {
-          const menuItems = openMenu().queryAll(By.css('.mat-menu-item'));
-          return menuItems[0];
-        }
+        const getLogoutButton = () => {
+          return openMenu().query(By.css('.mat-menu-item:nth-child(2)'));
+        };
 
         it('should exist', () => {
           const logoutButton = getLogoutButton();
