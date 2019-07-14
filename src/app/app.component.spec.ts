@@ -1,7 +1,10 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import {MatCardModule, MatToolbarModule} from '@angular/material';
+import {MatCardModule, MatMenuModule, MatToolbarModule} from '@angular/material';
+import {ProfileLogoComponent} from './profile-logo/profile-logo.component';
+import {TokenService} from './_services/token.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,10 +12,16 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         MatCardModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatMenuModule,
+        HttpClientTestingModule
+      ],
+      providers: [
+        TokenService
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        ProfileLogoComponent
       ],
     }).compileComponents();
   }));

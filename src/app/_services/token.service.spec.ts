@@ -22,18 +22,18 @@ describe('TokenService', () => {
 
   });
 
-  it('#saveToken should save token correct', () => {
+  it('saveToken should save token correct', () => {
     tokenService.saveToken(token);
     expect(localStorage.getItem(tokenName)).toEqual(token);
 
   });
 
-  it('#getToken should return correct token', () => {
+  it('getToken should return correct token', () => {
     localStorage.setItem(tokenName, token);
     expect(tokenService.getToken()).toEqual(token);
   });
 
-  it('#removeToken should work correct', () => {
+  it('removeToken should work correct', () => {
     tokenService.saveToken(token);
     expect(localStorage.getItem(tokenName)).toEqual(token);
     tokenService.removeToken();
@@ -41,13 +41,13 @@ describe('TokenService', () => {
 
   });
 
-  it('#tokenExist should return true if token exists', () => {
+  it('tokenExist should return true if token exists', () => {
     tokenService.saveToken(token);
     expect(tokenService.tokenExists()).toBeTruthy();
 
   });
 
-  it('#tokenExist should return false if token does not exists', () => {
+  it('tokenExist should return false if token does not exists', () => {
     expect(tokenService.tokenExists()).toBeFalsy();
   });
 
