@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ApplyTokenComponent} from './apply-token.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TokenService} from '../../_services/token.service';
+import {TokenService} from '../_services/token.service';
 
 describe('ApplyTokenComponent', () => {
   let component: ApplyTokenComponent;

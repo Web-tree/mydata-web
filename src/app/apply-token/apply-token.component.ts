@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpParams} from '@angular/common/http';
-import {TokenService} from '../../_services/token.service';
+import {TokenService} from '../_services/token.service';
 
 @Component({
   selector: 'app-apply-token',
@@ -21,7 +21,7 @@ export class ApplyTokenComponent implements OnInit {
     this.route.fragment.subscribe((fragment: string) => {
       const params = new HttpParams({fromString: fragment});
       this.tokenService.saveToken(params.get('token'));
-      this.router.navigate(['/']);
+      this.router.navigate(['/']).then(() => window.location.reload());
     });
   }
 
