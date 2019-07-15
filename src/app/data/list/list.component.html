@@ -1,0 +1,23 @@
+<div *ngIf="list">
+
+  <div *ngIf="list.length === 0">
+    You don't have data yet.
+  </div>
+  <div *ngIf="list.length > 0">
+    <table [dataSource]="list" mat-table>
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell>Name</th>
+        <td *matCellDef="let data" mat-cell>{{data.name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="value">
+        <th *matHeaderCellDef mat-header-cell>Value</th>
+        <td *matCellDef="let data" mat-cell>{{data.value}}</td>
+      </ng-container>
+      <tr *matHeaderRowDef="columns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: columns;" mat-row></tr>
+    </table>
+  </div>
+</div>
+<div *ngIf="!list">
+  <mat-spinner></mat-spinner>
+</div>
