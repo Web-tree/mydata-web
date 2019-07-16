@@ -16,4 +16,8 @@ export class DataService {
   getList(): Promise<Data[]> {
     return this.httpClient.get<Data[]>(environment.backendUrl + '/data').toPromise();
   }
+
+  add(data: Data) {
+    return this.httpClient.post(environment.backendUrl + '/data', data).toPromise();
+  }
 }

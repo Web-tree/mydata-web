@@ -38,16 +38,25 @@ describe('DataService', () => {
         expect(dataList.length).toEqual(2);
         expect(dataList[0].name).toEqual('name1');
         expect(dataList[0].value).toEqual('value1');
-        expect(dataList[0].userId).toEqual('userId1');
         expect(dataList[1].name).toEqual('name2');
         expect(dataList[1].value).toEqual('value2');
-        expect(dataList[1].userId).toEqual('userId2');
       });
 
       httpMock.expectOne(environment.backendUrl + '/data').flush([
-        {name: 'name1', value: 'value1', userId: 'userId1'},
-        {name: 'name2', value: 'value2', userId: 'userId2'}
+        {name: 'name1', value: 'value1'},
+        {name: 'name2', value: 'value2'}
       ]);
+    });
+  });
+
+  describe('add', () => {
+    it('should call backend', () => {
+      const data: Data = {name: 'aName', value: 'aValue'};
+      service.add(data).then();
+
+      const req = httpMock.expectOne(environment.backendUrl + '/data');
+      expect(req.request.method).toEqual('POST');
+      expect(req.request.body).toEqual(data);
     });
   });
 });
