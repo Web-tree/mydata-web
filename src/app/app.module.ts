@@ -4,7 +4,8 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatMenuModule, MatProgressSpinnerModule, MatTableModule, MatToolbarModule} from '@angular/material';
+// tslint:disable-next-line:max-line-length
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressSpinnerModule, MatSnackBarModule, MatTableModule, MatToolbarModule} from '@angular/material';
 import {ApplyTokenComponent} from './apply-token/apply-token.component';
 import {TokenService} from './_services/token.service';
 import {ServiceWorkerModule} from '@angular/service-worker';
@@ -13,30 +14,44 @@ import {ProfileLogoComponent} from './profile-logo/profile-logo.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ListComponent} from './data/list/list.component';
 import {TokenInterceptor} from './_interceptors/token.interceptor';
+import {AddComponent} from './data/add/add.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AlertService} from './_services/alert.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ApplyTokenComponent,
     ProfileLogoComponent,
-    ListComponent
+    ListComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    // forms
+    FormsModule,
+    ReactiveFormsModule,
     // angular
+    HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatCardModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     MatButtonModule,
     MatMenuModule,
     MatTableModule,
     MatProgressSpinnerModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule,
+
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+
   ],
   providers: [
     TokenService,
+    AlertService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
