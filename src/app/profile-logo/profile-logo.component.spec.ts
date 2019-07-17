@@ -87,10 +87,10 @@ describe('ProfileLogoComponent', () => {
       expect(button).toBeTruthy();
     });
 
-    it('should show first two letters from user name in upper case', () => {
-      fixture.whenStable().then(() => {
-        expect(button.textContent.trim()).toEqual('SO');
-      });
+    it('should show first two letters from user name in upper case', async () => {
+      await fixture.whenStable();
+      fixture.detectChanges();
+      expect(button.nativeElement.textContent.trim()).toEqual('SO');
     });
 
     describe('context menu', () => {

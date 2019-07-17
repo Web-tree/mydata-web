@@ -26,11 +26,11 @@ describe('Alert Service', () => {
   it('should open snack bar on success message', () => {
     const message = 'someMessage';
     alertService.success(message);
-    expect(snackBar.open).toHaveBeenCalledWith(message);
+    expect(snackBar.open).toHaveBeenCalledWith(message, 'X', {duration: 5000});
   });
   it('should open snack bar on error message', () => {
     const message = 'someMessage';
     alertService.success(message);
-    expect(snackBar.open).toHaveBeenCalledWith(message);
+    expect(snackBar.open).toHaveBeenCalledWith(message, 'X', {duration: 5000});
   });
 });

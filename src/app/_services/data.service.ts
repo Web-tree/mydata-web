@@ -17,7 +17,11 @@ export class DataService {
     return this.httpClient.get<Data[]>(environment.backendUrl + '/data').toPromise();
   }
 
-  add(data: Data) {
+  add(data: Data): Promise<any> {
     return this.httpClient.post(environment.backendUrl + '/data', data).toPromise();
+  }
+
+  get(name: string): Promise<Data> {
+    return this.httpClient.get<Data>(environment.backendUrl + '/data/' + name).toPromise();
   }
 }

@@ -1,0 +1,12 @@
+<div *ngIf="!data">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="data">
+  <h2>Data</h2>
+  <div>
+    Name: {{data.name}}
+  </div>
+  <div>
+    Value: {{data.value}}
+  </div>
+</div>

@@ -59,4 +59,21 @@ describe('DataService', () => {
       expect(req.request.body).toEqual(data);
     });
   });
+  describe('get', () => {
+    it('should call backend', () => {
+      service.get('aName').then();
+
+      const req = httpMock.expectOne(environment.backendUrl + '/data/aName');
+      expect(req.request.method).toEqual('GET');
+    });
+
+    it('should return promise with data from backend', () => {
+      const sentData = {name: 'aName', value: 'aValue'};
+      service.get('aName').then(data => {
+        expect(data).toEqual(sentData);
+      });
+
+      httpMock.expectOne(environment.backendUrl + '/data/aName').flush(sentData);
+    });
+  });
 });
