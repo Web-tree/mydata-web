@@ -7,6 +7,7 @@ import {Data} from '../../_models/data';
 import SpyObj = jasmine.SpyObj;
 import {By} from '@angular/platform-browser';
 import {MatProgressSpinnerModule, MatTableModule} from '@angular/material';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('ListComponent', () => {
   let fixture: ComponentFixture<ListComponent>;
@@ -18,7 +19,8 @@ describe('ListComponent', () => {
       imports: [
         HttpClientTestingModule,
         MatTableModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        RouterTestingModule
       ],
       providers: [
         {

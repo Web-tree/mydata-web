@@ -17,6 +17,7 @@ import {TokenInterceptor} from './_interceptors/token.interceptor';
 import {AddComponent} from './data/add/add.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AlertService} from './_services/alert.service';
+import {SingleComponent} from './data/single/single.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {AlertService} from './_services/alert.service';
     ApplyTokenComponent,
     ProfileLogoComponent,
     ListComponent,
-    AddComponent
+    AddComponent,
+    SingleComponent
   ],
   imports: [
     BrowserModule,

@@ -8,10 +8,14 @@ export class AlertService {
   }
 
   success(message: string) {
-    this.snackBar.open(message);
+    this.snackBar.open(message, 'X', {
+      duration: 5000
+    });
   }
 
   error(message: string) {
-    this.snackBar.open(message);
+    this.snackBar.open(message, 'X', {
+      duration: 5000
+    });
   }
 }
