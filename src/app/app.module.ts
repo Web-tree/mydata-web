@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // tslint:disable-next-line:max-line-length
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressSpinnerModule, MatSnackBarModule, MatTableModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressBarModule, MatProgressSpinnerModule, MatSnackBarModule, MatTableModule, MatToolbarModule, MatTooltipModule} from '@angular/material';
 import {ApplyTokenComponent} from './apply-token/apply-token.component';
 import {TokenService} from './_services/token.service';
 import {ServiceWorkerModule} from '@angular/service-worker';
@@ -49,6 +49,8 @@ import {SingleComponent} from './data/single/single.component';
     MatSnackBarModule,
 
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    MatTooltipModule,
+    MatProgressBarModule,
 
   ],
   providers: [

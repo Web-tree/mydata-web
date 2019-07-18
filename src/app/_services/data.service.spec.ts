@@ -76,4 +76,14 @@ describe('DataService', () => {
       httpMock.expectOne(environment.backendUrl + '/data/aName').flush(sentData);
     });
   });
+  describe('update', () => {
+    it('should call backend method', () => {
+      const data = {name: 'aName', value: 'aValue'};
+      service.update(data).then();
+
+      const req = httpMock.expectOne(environment.backendUrl + '/data/aName');
+      expect(req.request.method).toEqual('PUT');
+      expect(req.request.body).toEqual(data);
+    });
+  });
 });
