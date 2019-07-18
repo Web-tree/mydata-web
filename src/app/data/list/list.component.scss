@@ -2,3 +2,14 @@ table {
   width: 100%;
   text-align: left;
 }
+
+.mat-table .mat-button {
+  width: calc(100% - 15px);
+  width: -moz-calc(100% - 15px);
+  width: -webkit-calc(100% - 15px);
+  text-align: left;
+  margin-right: 15px;
+}
+
+.mat-table .mat-cel {
+}

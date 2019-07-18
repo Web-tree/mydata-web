@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Data, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 import {DataService} from '../../_services/data.service';
+import {Data} from '../../_models/data';
+import {AlertService} from '../../_services/alert.service';
 
 @Component({
   selector: 'app-single',
@@ -9,10 +11,13 @@ import {DataService} from '../../_services/data.service';
 })
 export class SingleComponent implements OnInit {
   data: Data;
+  isEditValue = false;
+  isUpdating = false;
 
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private alertService: AlertService
   ) {
   }
 
@@ -26,4 +31,13 @@ export class SingleComponent implements OnInit {
     );
   }
 
+  updateValue(value) {
+    this.isUpdating = true;
+    this.isEditValue = false;
+    this.data.value = value;
+    this.dataService.update(this.data).then(() => {
+      this.isUpdating = false;
+      this.alertService.success('Value updated');
+    });
+  }
 }

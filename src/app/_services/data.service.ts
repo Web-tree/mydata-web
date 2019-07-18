@@ -24,4 +24,8 @@ export class DataService {
   get(name: string): Promise<Data> {
     return this.httpClient.get<Data>(environment.backendUrl + '/data/' + name).toPromise();
   }
+
+  update(data: Data) {
+    return this.httpClient.put(environment.backendUrl + '/data/' + data.name, data).toPromise();
+  }
 }

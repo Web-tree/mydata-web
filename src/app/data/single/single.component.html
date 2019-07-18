@@ -1,12 +1,33 @@
+<a color="primary" mat-flat-button routerLink="/data">
+  <mat-icon aria-hidden="false" aria-label="Back">arrow_back</mat-icon>
+  Back to all data
+</a>
 <div *ngIf="!data">
   <mat-spinner></mat-spinner>
 </div>
 <div *ngIf="data">
   <h2>Data</h2>
   <div>
-    Name: {{data.name}}
+    <mat-form-field>
+      <input disabled matInput placeholder="Name" value="{{data.name}}"/>
+      <mat-icon matSuffix matTooltip="Name can't be modified" matTooltipPosition="right">lock</mat-icon>
+    </mat-form-field>
   </div>
   <div>
-    Value: {{data.value}}
+    <mat-form-field>
+      <input #updatedValue [disabled]="!isEditValue" matInput placeholder="Value" value="{{data.value}}"/>
+      <div *ngIf="!isUpdating" matSuffix>
+        <button (click)="isEditValue = true" *ngIf="!isEditValue" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="updateValue(updatedValue.value)" *ngIf="isEditValue" mat-icon-button>
+          <mat-icon>check</mat-icon>
+        </button>
+        <button (click)="isEditValue = false" *ngIf="isEditValue" mat-icon-button>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+      <mat-progress-bar *ngIf="isUpdating" mode="buffer"></mat-progress-bar>
+    </mat-form-field>
   </div>
 </div>

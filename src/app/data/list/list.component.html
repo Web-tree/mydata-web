@@ -7,7 +7,9 @@
     <table [dataSource]="list" mat-table>
       <ng-container matColumnDef="name">
         <th *matHeaderCellDef mat-header-cell>Name</th>
-        <td *matCellDef="let data" mat-cell><a routerLink="/data/{{data.name}}">{{data.name}}</a></td>
+        <td *matCellDef="let data" mat-cell>
+          <a mat-button routerLink="/data/{{data.name}}">{{data.name}}</a>
+        </td>
       </ng-container>
       <ng-container matColumnDef="value">
         <th *matHeaderCellDef mat-header-cell>Value</th>

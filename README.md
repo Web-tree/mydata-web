@@ -1,4 +1,4 @@
-# MydataWeb
+# My data web
 
 [![Build Status](https://travis-ci.org/Web-tree/mydata-web.svg?branch=master)](https://travis-ci.org/Web-tree/mydata-web)
 
