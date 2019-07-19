@@ -1,4 +1,4 @@
-<a color="primary" mat-flat-button routerLink="/data">
+<a class="navigation-button" color="primary" mat-flat-button routerLink="/data">
   <mat-icon aria-hidden="false" aria-label="Back">arrow_back</mat-icon>
   Back to all data
 </a>
@@ -24,7 +24,7 @@
           <mat-icon>check</mat-icon>
         </button>
         <button (click)="isEditValue = false" *ngIf="isEditValue" mat-icon-button>
-          <mat-icon>cancel</mat-icon>
+          <mat-icon>clear</mat-icon>
         </button>
       </div>
       <mat-progress-bar *ngIf="isUpdating" mode="buffer"></mat-progress-bar>
