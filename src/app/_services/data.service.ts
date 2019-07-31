@@ -28,4 +28,8 @@ export class DataService {
   update(data: Data) {
     return this.httpClient.put(environment.backendUrl + '/data/' + data.name, data).toPromise();
   }
+
+  delete(name: string): Promise<void> {
+    return this.httpClient.delete<void>(environment.backendUrl + '/data/' + name).toPromise();
+  }
 }

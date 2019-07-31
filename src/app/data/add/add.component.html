@@ -14,5 +14,5 @@
       <input formControlName="value" matInput placeholder="Value"/>
     </mat-form-field>
   </div>
-  <button [disabled]="!form.valid" mat-raised-button type="submit">Add</button>
+  <button [disabled]="!form.valid || inProgress" mat-raised-button type="submit">Add</button>
 </form>
