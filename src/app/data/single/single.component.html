@@ -2,11 +2,11 @@
   <mat-icon aria-hidden="false" aria-label="Back">arrow_back</mat-icon>
   Back to all data
 </a>
-<div *ngIf="!data">
+<h2>Data</h2>
+<div *ngIf="!data" class="centered">
   <mat-spinner></mat-spinner>
 </div>
 <div *ngIf="data">
-  <h2>Data</h2>
   <div>
     <mat-form-field>
       <input disabled matInput placeholder="Name" value="{{data.name}}"/>
