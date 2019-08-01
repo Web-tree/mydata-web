@@ -5,7 +5,7 @@
 <h2>Add data</h2>
 <form (ngSubmit)="onSubmit()" [formGroup]="form">
   <div>
-    <mat-form-field>
+    <mat-form-field hintLabel="Unique name of your data. It can't be changed after creation.">
       <input formControlName="name" matInput placeholder="Name"/>
     </mat-form-field>
   </div>
