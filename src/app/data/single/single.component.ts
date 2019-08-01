@@ -3,6 +3,8 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {DataService} from '../../_services/data.service';
 import {Data} from '../../_models/data';
 import {AlertService} from '../../_services/alert.service';
+import {MatDialog} from '@angular/material';
+import {DeleteDataDialogComponent} from './delete-data-dialog.component';
 
 @Component({
   selector: 'app-single',
@@ -17,7 +19,8 @@ export class SingleComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    public dialog: MatDialog
   ) {
   }
 
@@ -38,6 +41,13 @@ export class SingleComponent implements OnInit {
     this.dataService.update(this.data).then(() => {
       this.isUpdating = false;
       this.alertService.success('Value updated');
+    });
+  }
+
+  openDeleteDialog() {
+    this.dialog.open(DeleteDataDialogComponent, {
+      width: '250px',
+      data: this.data
     });
   }
 }

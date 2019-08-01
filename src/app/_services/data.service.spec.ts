@@ -86,4 +86,13 @@ describe('DataService', () => {
       expect(req.request.body).toEqual(data);
     });
   });
+  describe('delete', () => {
+    it('should call backend method', () => {
+      service.delete('some-name').then();
+
+      const req = httpMock.expectOne(environment.backendUrl + '/data/some-name');
+      expect(req.request.method).toEqual('DELETE');
+      expect(req.request.body).toBeFalsy();
+    });
+  });
 });

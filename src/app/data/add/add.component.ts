@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 })
 export class AddComponent implements OnInit {
   form: FormGroup;
+  inProgress = false;
 
   constructor(
     private dataService: DataService,
@@ -23,7 +24,6 @@ export class AddComponent implements OnInit {
     this.form = fb.group({
       name: ['', Validators.required],
       value: ['', Validators.required],
-
     });
   }
 
@@ -35,9 +35,10 @@ export class AddComponent implements OnInit {
   }
 
   onSubmit() {
+    this.inProgress = true;
     this.dataService.add(this.form.value).then(() => {
       this.alertService.success('Data added successfully');
       this.router.navigate(['/data/' + this.form.controls.name.value]);
-    });
+    }).finally(() => this.inProgress = false);
   }
 }

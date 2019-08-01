@@ -15,7 +15,7 @@
   </div>
   <div>
     <mat-form-field>
-      <input #updatedValue [disabled]="!isEditValue" matInput placeholder="Value" value="{{data.value}}"/>
+      <input #updatedValue (keyup.enter)="updateValue(updatedValue.value)" [disabled]="!isEditValue" matInput placeholder="Value" value="{{data.value}}"/>
       <div *ngIf="!isUpdating" matSuffix>
         <button (click)="isEditValue = true" *ngIf="!isEditValue" mat-icon-button>
           <mat-icon>edit</mat-icon>
@@ -30,4 +30,14 @@
       <mat-progress-bar *ngIf="isUpdating" mode="buffer"></mat-progress-bar>
     </mat-form-field>
   </div>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Danger zone
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <button (click)="openDeleteDialog()" cdkFocusInitial color="warn" mat-stroked-button>Delete</button>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
