@@ -50,10 +50,10 @@ describe('AddComponent', () => {
   });
 
   it('should call add method on form submit', () => {
-    component.form.controls.name.setValue('aName');
+    component.form.controls.name.setValue('a Name');
     component.form.controls.value.setValue('aValue');
     fixture.debugElement.query(By.css('form')).triggerEventHandler('ngSubmit', null);
 
-    expect(dataService.add).toHaveBeenCalledWith({name: 'aName', value: 'aValue'});
+    expect(dataService.add).toHaveBeenCalledWith({name: 'a-name', value: 'aValue'});
   });
 });

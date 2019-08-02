@@ -14,6 +14,11 @@ export class AddComponent implements OnInit {
   form: FormGroup;
   inProgress = false;
 
+  name: FormControl = new FormControl('', Validators.compose([
+    Validators.required,
+    Validators.pattern('^[A-Za-z0-9 ]*$')
+  ]));
+
   constructor(
     private dataService: DataService,
     private alertService: AlertService,
@@ -22,7 +27,7 @@ export class AddComponent implements OnInit {
     fb: FormBuilder
   ) {
     this.form = fb.group({
-      name: ['', Validators.required],
+      name: this.name,
       value: ['', Validators.required],
     });
   }
@@ -36,9 +41,16 @@ export class AddComponent implements OnInit {
 
   onSubmit() {
     this.inProgress = true;
-    this.dataService.add(this.form.value).then(() => {
+    const data = this.form.value;
+    data.name = this.getFormattedName();
+    console.log(data);
+    this.dataService.add(data).then(() => {
       this.alertService.success('Data added successfully');
-      this.router.navigate(['/data/' + this.form.controls.name.value]);
+      this.router.navigate(['/data/' + data.name]);
     }).finally(() => this.inProgress = false);
+  }
+
+  private getFormattedName() {
+    return this.form.controls.name.value.trim().toLowerCase().replace(/\s+/g, '-');
   }
 }

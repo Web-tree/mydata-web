@@ -9,7 +9,7 @@
 <div *ngIf="data">
   <div>
     <mat-form-field>
-      <input disabled matInput placeholder="Name" value="{{data.name}}"/>
+      <input disabled matInput placeholder="Name" value="{{data.name | titlecase}}"/>
       <mat-icon matSuffix matTooltip="Name can't be modified" matTooltipPosition="right">lock</mat-icon>
     </mat-form-field>
   </div>
@@ -17,13 +17,13 @@
     <mat-form-field>
       <input #updatedValue (keyup.enter)="updateValue(updatedValue.value)" [disabled]="!isEditValue" matInput placeholder="Value" value="{{data.value}}"/>
       <div *ngIf="!isUpdating" matSuffix>
-        <button (click)="isEditValue = true" *ngIf="!isEditValue" mat-icon-button>
+        <button (click)="isEditValue = true" *ngIf="!isEditValue" mat-button mat-icon-button>
           <mat-icon>edit</mat-icon>
         </button>
-        <button (click)="updateValue(updatedValue.value)" *ngIf="isEditValue" mat-icon-button>
+        <button (click)="updateValue(updatedValue.value)" *ngIf="isEditValue" mat-button mat-icon-button>
           <mat-icon>check</mat-icon>
         </button>
-        <button (click)="isEditValue = false" *ngIf="isEditValue" mat-icon-button>
+        <button (click)="isEditValue = false" *ngIf="isEditValue" mat-button mat-icon-button>
           <mat-icon>clear</mat-icon>
         </button>
       </div>
