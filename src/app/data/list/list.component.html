@@ -1,10 +1,10 @@
 <button class="navigation-button" color="primary" mat-flat-button routerLink="/data/add">Add data</button>
+<h2>Your data</h2>
 <div *ngIf="list">
   <div *ngIf="list.length === 0">
     You don't have data yet.
   </div>
   <div *ngIf="list.length > 0">
-    <h2>Your data</h2>
     <table [dataSource]="list" mat-table>
       <ng-container matColumnDef="name">
         <th *matHeaderCellDef mat-header-cell>Name</th>
@@ -21,6 +21,6 @@
     </table>
   </div>
 </div>
-<div *ngIf="!list">
+<div *ngIf="!list" class="centered">
   <mat-spinner></mat-spinner>
 </div>

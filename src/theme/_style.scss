@@ -39,3 +39,13 @@ body {
   margin-bottom: 10px !important;
   margin-right: 10px !important;
 }
+
+.centered {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
