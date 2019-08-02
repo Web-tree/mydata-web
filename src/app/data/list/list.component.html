@@ -9,7 +9,7 @@
       <ng-container matColumnDef="name">
         <th *matHeaderCellDef mat-header-cell>Name</th>
         <td *matCellDef="let data" mat-cell>
-          <a mat-button routerLink="/data/{{data.name}}">{{data.name}}</a>
+          <a mat-button routerLink="/data/{{data.name}}">{{data.name | dataName}}</a>
         </td>
       </ng-container>
       <ng-container matColumnDef="value">

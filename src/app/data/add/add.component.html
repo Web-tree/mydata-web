@@ -5,8 +5,11 @@
 <h2>Add data</h2>
 <form (ngSubmit)="onSubmit()" [formGroup]="form">
   <div>
-    <mat-form-field>
-      <input formControlName="name" matInput placeholder="Name"/>
+    <mat-form-field hintLabel="Unique name of your data. It can't be changed after creation.">
+      <input autofocus formControlName="name" matInput placeholder="Name"/>
+      <mat-error *ngIf="name.dirty && name.invalid">
+        Name can contain only numbers, characters and spaces.
+      </mat-error>
     </mat-form-field>
   </div>
   <div>
@@ -14,5 +17,5 @@
       <input formControlName="value" matInput placeholder="Value"/>
     </mat-form-field>
   </div>
-  <button [disabled]="!form.valid || inProgress" mat-raised-button type="submit">Add</button>
+  <button [disabled]="!form.valid || inProgress" color="accent" mat-raised-button type="submit">Add</button>
 </form>

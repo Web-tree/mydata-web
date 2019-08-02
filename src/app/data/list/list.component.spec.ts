@@ -8,6 +8,7 @@ import SpyObj = jasmine.SpyObj;
 import {By} from '@angular/platform-browser';
 import {MatProgressSpinnerModule, MatTableModule} from '@angular/material';
 import {RouterTestingModule} from '@angular/router/testing';
+import {DataNamePipe} from '../../_pipes/data-name.pipe';
 
 describe('ListComponent', () => {
   let fixture: ComponentFixture<ListComponent>;
@@ -15,7 +16,10 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ListComponent],
+      declarations: [
+        ListComponent,
+        DataNamePipe
+      ],
       imports: [
         HttpClientTestingModule,
         MatTableModule,

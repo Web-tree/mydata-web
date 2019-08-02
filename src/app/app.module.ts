@@ -19,6 +19,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AlertService} from './_services/alert.service';
 import {SingleComponent} from './data/single/single.component';
 import {DeleteDataDialogComponent} from './data/single/delete-data-dialog.component';
+import {DataNamePipe} from './_pipes/data-name.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {DeleteDataDialogComponent} from './data/single/delete-data-dialog.compon
     ListComponent,
     AddComponent,
     SingleComponent,
-    DeleteDataDialogComponent
+    DeleteDataDialogComponent,
+    DataNamePipe
   ],
   imports: [
     BrowserModule,
