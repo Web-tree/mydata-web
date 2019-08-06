@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // tslint:disable-next-line:max-line-length
-import {MatButtonModule, MatCardModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressBarModule, MatProgressSpinnerModule, MatSnackBarModule, MatTableModule, MatToolbarModule, MatTooltipModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule, MatTableModule, MatToolbarModule, MatTooltipModule} from '@angular/material';
 import {ApplyTokenComponent} from './apply-token/apply-token.component';
 import {TokenService} from './_services/token.service';
 import {ServiceWorkerModule} from '@angular/service-worker';
@@ -20,6 +20,7 @@ import {AlertService} from './_services/alert.service';
 import {SingleComponent} from './data/single/single.component';
 import {DeleteDataDialogComponent} from './data/single/delete-data-dialog.component';
 import {DataNamePipe} from './_pipes/data-name.pipe';
+import {ChangeDataTypeDialogComponent} from './data/single/change-data-type-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {DataNamePipe} from './_pipes/data-name.pipe';
     AddComponent,
     SingleComponent,
     DeleteDataDialogComponent,
+    ChangeDataTypeDialogComponent,
     DataNamePipe
   ],
   imports: [
@@ -57,11 +59,13 @@ import {DataNamePipe} from './_pipes/data-name.pipe';
 
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     MatTooltipModule,
+    MatSelectModule,
 
 
   ],
   entryComponents: [
-    DeleteDataDialogComponent
+    DeleteDataDialogComponent,
+    ChangeDataTypeDialogComponent
   ],
   providers: [
     TokenService,

@@ -8,26 +8,52 @@
 </div>
 <div *ngIf="data">
   <div>
+    <div>
+      <mat-form-field *ngIf="isEditType">
+        <mat-label>Type</mat-label>
+        <mat-select (selectionChange)="openChangeTypeDialog()" [(value)]="type">
+          <mat-option value="email">Email</mat-option>
+          <mat-option value="names">Names</mat-option>
+          <mat-option value="documents">Documents</mat-option>
+          <mat-option value="address">Address</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+        <mat-hint>Only "other" type can be changed after creation.</mat-hint>
+        <span matSuffix>
+          <button (click)="isEditType = false" *ngIf="isEditType" mat-button mat-icon-button>
+            <mat-icon>clear</mat-icon>
+          </button>
+        </span>
+      </mat-form-field>
+      <mat-form-field *ngIf="!isEditType">
+        <input disabled matInput placeholder="Type" value="{{data.type | titlecase}}"/>
+        <mat-icon *ngIf="data.type !== 'other'" matSuffix matTooltip="Only 'other' type can be modified." matTooltipPosition="right">lock</mat-icon>
+        <button (click)="isEditType = true" *ngIf="!isEditType && data.type === 'other'" mat-button mat-icon-button matSuffix>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <mat-progress-bar *ngIf="isTypeUpdating" mode="buffer"></mat-progress-bar>
+      </mat-form-field>
+    </div>
     <mat-form-field>
       <input disabled matInput placeholder="Name" value="{{data.name | titlecase}}"/>
-      <mat-icon matSuffix matTooltip="Name can't be modified" matTooltipPosition="right">lock</mat-icon>
+      <mat-icon matSuffix matTooltip="Name can't be modified." matTooltipPosition="right">lock</mat-icon>
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
       <input #updatedValue (keyup.enter)="updateValue(updatedValue.value)" [disabled]="!isEditValue" matInput placeholder="Value" value="{{data.value}}"/>
-      <div *ngIf="!isUpdating" matSuffix>
+      <div *ngIf="!isValueUpdating" matSuffix>
         <button (click)="isEditValue = true" *ngIf="!isEditValue" mat-button mat-icon-button>
           <mat-icon>edit</mat-icon>
         </button>
         <button (click)="updateValue(updatedValue.value)" *ngIf="isEditValue" mat-button mat-icon-button>
           <mat-icon>check</mat-icon>
         </button>
-        <button (click)="isEditValue = false" *ngIf="isEditValue" mat-button mat-icon-button>
+        <button (click)="(updatedValue.value = data.value) && (isEditValue = false)" *ngIf="isEditValue" mat-button mat-icon-button>
           <mat-icon>clear</mat-icon>
         </button>
       </div>
-      <mat-progress-bar *ngIf="isUpdating" mode="buffer"></mat-progress-bar>
+      <mat-progress-bar *ngIf="isValueUpdating" mode="buffer"></mat-progress-bar>
     </mat-form-field>
   </div>
   <mat-accordion>

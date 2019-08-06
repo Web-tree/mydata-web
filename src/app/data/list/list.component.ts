@@ -9,7 +9,11 @@ import {DataService} from '../../_services/data.service';
 })
 export class ListComponent implements OnInit {
   list: Data[];
-  columns = ['name', 'value'];
+  columns = [
+    'name',
+    'type',
+    'value'
+  ];
 
   constructor(
     private dataService: DataService

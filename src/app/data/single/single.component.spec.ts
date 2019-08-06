@@ -4,7 +4,7 @@ import {SingleComponent} from './single.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 // tslint:disable-next-line:max-line-length
-import {MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatProgressBarModule, MatProgressSpinnerModule, MatTooltipModule} from '@angular/material';
+import {MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule, MatTooltipModule} from '@angular/material';
 import {AlertService} from '../../_services/alert.service';
 
 describe('SingleComponent', () => {
@@ -23,6 +23,7 @@ describe('SingleComponent', () => {
         MatFormFieldModule,
         MatProgressBarModule,
         MatExpansionModule,
+        MatSelectModule,
         MatDialogModule
       ],
       providers: [
