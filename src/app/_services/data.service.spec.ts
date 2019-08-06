@@ -51,7 +51,7 @@ describe('DataService', () => {
 
   describe('add', () => {
     it('should call backend', () => {
-      const data: Data = {name: 'aName', value: 'aValue'};
+      const data: Data = {name: 'aName', value: 'aValue', type: 'other'};
       service.add(data).then();
 
       const req = httpMock.expectOne(environment.backendUrl + '/data');
@@ -68,7 +68,7 @@ describe('DataService', () => {
     });
 
     it('should return promise with data from backend', () => {
-      const sentData = {name: 'aName', value: 'aValue'};
+      const sentData = {name: 'aName', value: 'aValue', type: 'other'};
       service.get('aName').then(data => {
         expect(data).toEqual(sentData);
       });
@@ -78,7 +78,7 @@ describe('DataService', () => {
   });
   describe('update', () => {
     it('should call backend method', () => {
-      const data = {name: 'aName', value: 'aValue'};
+      const data = {name: 'aName', value: 'aValue', type: 'other'};
       service.update(data).then();
 
       const req = httpMock.expectOne(environment.backendUrl + '/data/aName');

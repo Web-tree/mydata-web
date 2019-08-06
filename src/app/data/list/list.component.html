@@ -6,6 +6,12 @@
   </div>
   <div *ngIf="list.length > 0">
     <table [dataSource]="list" mat-table>
+      <ng-container matColumnDef="type">
+        <th *matHeaderCellDef mat-header-cell>Type</th>
+        <td *matCellDef="let data" mat-cell>
+          {{data.type}}
+        </td>
+      </ng-container>
       <ng-container matColumnDef="name">
         <th *matHeaderCellDef mat-header-cell>Name</th>
         <td *matCellDef="let data" mat-cell>

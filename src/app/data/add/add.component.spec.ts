@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AddComponent} from './add.component';
-import {MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
+import {MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Location, LocationStrategy} from '@angular/common';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -26,6 +26,7 @@ describe('AddComponent', () => {
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
+        MatSelectModule,
         RouterTestingModule
       ],
       providers: [
@@ -52,8 +53,9 @@ describe('AddComponent', () => {
   it('should call add method on form submit', () => {
     component.form.controls.name.setValue('a Name');
     component.form.controls.value.setValue('aValue');
+    component.form.controls.type.setValue('other');
     fixture.debugElement.query(By.css('form')).triggerEventHandler('ngSubmit', null);
 
-    expect(dataService.add).toHaveBeenCalledWith({name: 'a-name', value: 'aValue'});
+    expect(dataService.add).toHaveBeenCalledWith({name: 'a-name', value: 'aValue', type: 'other'});
   });
 });
