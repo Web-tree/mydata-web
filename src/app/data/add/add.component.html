@@ -20,8 +20,13 @@
   <div>
     <mat-form-field hintLabel="Unique name of your data. It can't be changed after creation.">
       <input autofocus formControlName="name" matInput placeholder="Name"/>
-      <mat-error *ngIf="name.dirty && name.invalid">
-        Name can contain only numbers, characters and spaces.
+      <mat-error *ngIf="name.dirty && name.errors">
+        <span *ngIf="name.errors.pattern">
+          Name can contain only numbers, characters and spaces.
+        </span>
+        <span *ngIf="name.errors.nameExists">
+          This name already exists.
+        </span>
       </mat-error>
     </mat-form-field>
   </div>

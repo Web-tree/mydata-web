@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {DataService} from '../../_services/data.service';
 import {AlertService} from '../../_services/alert.service';
 import {Router} from '@angular/router';
+import {isNameExists} from '../../_validators/uniq-name.validator';
 
 @Component({
   selector: 'app-add',
@@ -19,19 +20,21 @@ export class AddComponent implements OnInit {
   valueValidators = {
     email: Validators.email
   };
-  private nameValidators = Validators.compose([
-    Validators.required,
-    Validators.pattern('^[A-Za-z0-9 ]*$')
-  ]);
-  name: FormControl = new FormControl('', this.nameValidators);
+  name: FormControl;
+  private nameValidators;
 
   constructor(
     private dataService: DataService,
     private alertService: AlertService,
     private router: Router,
     private location: Location,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {
+    this.nameValidators = Validators.compose([
+      Validators.required,
+      Validators.pattern('^[A-Za-z0-9 ]*$'),
+    ]);
+    this.name = new FormControl('', this.nameValidators, isNameExists(dataService));
     this.regenerateForm();
   }
 

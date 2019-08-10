@@ -3,7 +3,7 @@
   Back to all data
 </a>
 <h2>Data</h2>
-<div *ngIf="!data" class="centered">
+<div *ngIf="!data && !notFound" class="centered">
   <mat-spinner></mat-spinner>
 </div>
 <div *ngIf="data">
@@ -66,4 +66,8 @@
       <button (click)="openDeleteDialog()" cdkFocusInitial color="warn" mat-stroked-button>Delete</button>
     </mat-expansion-panel>
   </mat-accordion>
+</div>
+
+<div *ngIf="notFound">
+  You don't have data with name {{name}}. <a routerLink="/data/add">Try to create it!</a>
 </div>

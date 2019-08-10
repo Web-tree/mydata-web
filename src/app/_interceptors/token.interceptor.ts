@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TokenService} from '../_services/token.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TokenInterceptor implements HttpInterceptor {
   constructor(public tokenService: TokenService) {
   }
@@ -18,3 +20,9 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(request);
   }
 }
+
+export const TokenInterceptorProvider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: TokenInterceptor,
+  multi: true,
+};
