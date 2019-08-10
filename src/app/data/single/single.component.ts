@@ -6,6 +6,7 @@ import {AlertService} from '../../_services/alert.service';
 import {MatDialog} from '@angular/material';
 import {DeleteDataDialogComponent} from './delete-data-dialog.component';
 import {ChangeDataTypeDialogComponent} from './change-data-type-dialog.component';
+import {isNotFoundError} from '../../_helpers/http-response.helper';
 
 @Component({
   selector: 'app-single',
@@ -19,6 +20,8 @@ export class SingleComponent implements OnInit {
   isValueUpdating = false;
   isTypeUpdating = false;
   type = '';
+  notFound: boolean;
+  name: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,11 +34,17 @@ export class SingleComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(
       (params: ParamMap) => {
+        this.name = params.get('name');
         return this.dataService
-          .get(params.get('name'))
+          .get(this.name)
           .then(data => {
             this.data = data;
             this.type = data.type;
+          })
+          .catch(reason => {
+            if (isNotFoundError(reason)) {
+              this.notFound = true;
+            }
           });
       }
     );

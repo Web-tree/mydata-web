@@ -31,7 +31,7 @@ describe('AddComponent', () => {
       ],
       providers: [
         {provide: Location, useValue: jasmine.createSpyObj('Location', ['back'])},
-        {provide: DataService, useValue: jasmine.createSpyObj('DataService', ['add'])},
+        {provide: DataService, useValue: jasmine.createSpyObj('DataService', ['add', 'get'])},
         {provide: AlertService, useValue: jasmine.createSpyObj('AlertService', ['success'])},
 
       ]
@@ -51,9 +51,12 @@ describe('AddComponent', () => {
   });
 
   it('should call add method on form submit', () => {
+    dataService.get = jasmine.createSpy().and.returnValue(Promise.reject()); // passing uniq validator
+
     component.form.controls.name.setValue('a Name');
     component.form.controls.value.setValue('aValue');
     component.form.controls.type.setValue('other');
+
     fixture.debugElement.query(By.css('form')).triggerEventHandler('ngSubmit', null);
 
     expect(dataService.add).toHaveBeenCalledWith({name: 'a-name', value: 'aValue', type: 'other'});

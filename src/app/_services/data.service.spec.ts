@@ -76,6 +76,14 @@ describe('DataService', () => {
       httpMock.expectOne(environment.backendUrl + '/data/aName').flush(sentData);
     });
   });
+  xdescribe('isExists', () => {
+    it('should return false when data not exists', async () => {
+      const promise = service.isExists('not-existing-name').then();
+
+      httpMock.expectOne(environment.backendUrl + '/data/not-existing-name').flush({}, {status: 404});
+      expect(await promise).toBeFalsy();
+    });
+  });
   describe('update', () => {
     it('should call backend method', () => {
       const data = {name: 'aName', value: 'aValue', type: 'other'};

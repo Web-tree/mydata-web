@@ -11,9 +11,9 @@ import {TokenService} from './_services/token.service';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {ProfileLogoComponent} from './profile-logo/profile-logo.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {ListComponent} from './data/list/list.component';
-import {TokenInterceptor} from './_interceptors/token.interceptor';
+import {TokenInterceptorProvider} from './_interceptors/token.interceptor';
 import {AddComponent} from './data/add/add.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AlertService} from './_services/alert.service';
@@ -21,6 +21,9 @@ import {SingleComponent} from './data/single/single.component';
 import {DeleteDataDialogComponent} from './data/single/delete-data-dialog.component';
 import {DataNamePipe} from './_pipes/data-name.pipe';
 import {ChangeDataTypeDialogComponent} from './data/single/change-data-type-dialog.component';
+import {NotFoundComponent} from './errors/not-found/not-found.component';
+import {DataService} from './_services/data.service';
+import {HttpErrorInterceptorProvider} from './_interceptors/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,10 +35,11 @@ import {ChangeDataTypeDialogComponent} from './data/single/change-data-type-dial
     SingleComponent,
     DeleteDataDialogComponent,
     ChangeDataTypeDialogComponent,
-    DataNamePipe
+    DataNamePipe,
+    NotFoundComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
     AppRoutingModule,
     // forms
     FormsModule,
@@ -60,8 +64,6 @@ import {ChangeDataTypeDialogComponent} from './data/single/change-data-type-dial
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     MatTooltipModule,
     MatSelectModule,
-
-
   ],
   entryComponents: [
     DeleteDataDialogComponent,
@@ -70,11 +72,9 @@ import {ChangeDataTypeDialogComponent} from './data/single/change-data-type-dial
   providers: [
     TokenService,
     AlertService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
+    DataService,
+    TokenInterceptorProvider,
+    HttpErrorInterceptorProvider,
   ],
   bootstrap: [AppComponent]
 })
