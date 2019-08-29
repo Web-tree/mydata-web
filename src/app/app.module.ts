@@ -24,6 +24,9 @@ import {ChangeDataTypeDialogComponent} from './data/single/change-data-type-dial
 import {NotFoundComponent} from './errors/not-found/not-found.component';
 import {DataService} from './_services/data.service';
 import {HttpErrorInterceptorProvider} from './_interceptors/http-error.interceptor';
+import {SatPopoverModule} from '@ncstate/sat-popover';
+import {UsageAddComponent} from './data/usage/usage-add/usage-add.component';
+import {UsageService} from './_services/usage.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import {HttpErrorInterceptorProvider} from './_interceptors/http-error.intercept
     ChangeDataTypeDialogComponent,
     DataNamePipe,
     NotFoundComponent,
+    UsageAddComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
@@ -64,6 +68,7 @@ import {HttpErrorInterceptorProvider} from './_interceptors/http-error.intercept
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     MatTooltipModule,
     MatSelectModule,
+    SatPopoverModule,
   ],
   entryComponents: [
     DeleteDataDialogComponent,
@@ -73,6 +78,7 @@ import {HttpErrorInterceptorProvider} from './_interceptors/http-error.intercept
     TokenService,
     AlertService,
     DataService,
+    UsageService,
     TokenInterceptorProvider,
     HttpErrorInterceptorProvider,
   ],
