@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UsageService} from '../../../_services/usage.service';
 import {Usage} from '../../../_models/usage';
+import {SatPopover} from '@ncstate/sat-popover';
+import {AlertService} from '../../../_services/alert.service';
 
 @Component({
   selector: 'app-usage-add',
@@ -20,7 +22,8 @@ export class UsageAddComponent implements OnInit {
 
   constructor(
     fb: FormBuilder,
-    private usageService: UsageService
+    private usageService: UsageService,
+    private alertService: AlertService
   ) {
     this.form = fb.group({
       type: this.type,
@@ -31,11 +34,14 @@ export class UsageAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
+  onSubmit(p: SatPopover) {
     this.usageService.add(this.dataName, {
-      type: this.type.value,
-      value: this.getValue()
-    } as Usage);
+      usageType: this.type.value,
+      usageValue: this.getValue()
+    } as Usage).then(() => {
+      this.alertService.success('Usage was successfully added');
+      p.close();
+    });
   }
 
   private getValue(): string {

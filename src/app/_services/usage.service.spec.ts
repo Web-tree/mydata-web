@@ -19,8 +19,8 @@ describe('Usage service', () => {
 
   it('should send POST request when on add', (done: DoneFn) => {
     const usage = new Usage();
-    usage.type = 'url';
-    usage.value = 'https://some.url';
+    usage.usageType = 'url';
+    usage.usageValue = 'https://some.url';
     usageService.add('a-name', usage).then(value => {
       expect(value).toEqual(usage);
       return done();

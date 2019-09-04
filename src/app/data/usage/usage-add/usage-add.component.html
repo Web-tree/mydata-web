@@ -7,7 +7,7 @@
       <mat-icon>close</mat-icon>
     </button>
     <h2>Add usage</h2>
-    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <form (ngSubmit)="onSubmit(p)" [formGroup]="form">
       <mat-form-field>
         <mat-label>Select usage type</mat-label>
         <mat-select [formControl]="type">

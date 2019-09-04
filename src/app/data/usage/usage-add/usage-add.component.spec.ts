@@ -80,10 +80,19 @@ describe('UsageAddComponent', () => {
           submitButton.nativeElement.click();
 
           expect(usageService.add).toHaveBeenCalledWith('a-name', {
-              type: 'url',
-              value: 'https://github.com'
+            usageType: 'url',
+            usageValue: 'https://github.com'
             } as Usage
           );
+        });
+        xit('should close window after success call', () => {
+          (usageService as any).add.and.returnValue(Promise.resolve());
+
+          const submitButton = fixture.debugElement.query(By.css('button[type=submit]'));
+          submitButton.nativeElement.click();
+
+          fixture.detectChanges();
+          expect(fixture.debugElement.query(By.css('.sat-popover-container'))).toBeFalsy();
         });
       });
     });

@@ -1,4 +1,4 @@
 export class Usage {
-  type: string;
-  value: string;
+  usageType: string;
+  usageValue: string;
 }
