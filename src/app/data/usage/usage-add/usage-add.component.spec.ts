@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {UsageAddComponent} from './usage-add.component';
-import {MatCardModule, MatIconModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {MatCardModule, MatIconModule, MatInputModule, MatSelectModule, MatSnackBarModule} from '@angular/material';
 import {SatPopoverModule} from '@ncstate/sat-popover';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -22,6 +22,7 @@ describe('UsageAddComponent', () => {
         MatCardModule,
         MatSelectModule,
         MatInputModule,
+        MatSnackBarModule,
         SatPopoverModule,
         FormsModule,
         ReactiveFormsModule,

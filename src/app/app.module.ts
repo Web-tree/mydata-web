@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // tslint:disable-next-line:max-line-length
-import {MatButtonModule, MatCardModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule, MatTableModule, MatToolbarModule, MatTooltipModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule} from '@angular/material';
 import {ApplyTokenComponent} from './apply-token/apply-token.component';
 import {TokenService} from './_services/token.service';
 import {ServiceWorkerModule} from '@angular/service-worker';
@@ -27,6 +27,7 @@ import {HttpErrorInterceptorProvider} from './_interceptors/http-error.intercept
 import {SatPopoverModule} from '@ncstate/sat-popover';
 import {UsageAddComponent} from './data/usage/usage-add/usage-add.component';
 import {UsageService} from './_services/usage.service';
+import {UsageListComponent} from './data/usage/usage-list/usage-list.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {UsageService} from './_services/usage.service';
     DataNamePipe,
     NotFoundComponent,
     UsageAddComponent,
+    UsageListComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
@@ -69,6 +71,7 @@ import {UsageService} from './_services/usage.service';
     MatTooltipModule,
     MatSelectModule,
     SatPopoverModule,
+    MatTabsModule,
   ],
   entryComponents: [
     DeleteDataDialogComponent,
