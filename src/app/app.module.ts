@@ -25,9 +25,12 @@ import {NotFoundComponent} from './errors/not-found/not-found.component';
 import {DataService} from './_services/data.service';
 import {HttpErrorInterceptorProvider} from './_interceptors/http-error.interceptor';
 import {SatPopoverModule} from '@ncstate/sat-popover';
-import {UsageAddComponent} from './data/usage/usage-add/usage-add.component';
+import {UsageAddDialogComponent} from './data/usage/usage-add-dialog/usage-add-dialog.component';
 import {UsageService} from './_services/usage.service';
 import {UsageListComponent} from './data/usage/usage-list/usage-list.component';
+import {UsageAddPageComponent} from './data/usage/usage-add-page/usage-add-page.component';
+import {UsageAddFormComponent} from './data/usage/usage-add-form/usage-add-form.component';
+import {DataNotFoundComponent} from './data/error/data-not-found/data-not-found.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +44,11 @@ import {UsageListComponent} from './data/usage/usage-list/usage-list.component';
     ChangeDataTypeDialogComponent,
     DataNamePipe,
     NotFoundComponent,
-    UsageAddComponent,
+    UsageAddDialogComponent,
     UsageListComponent,
+    UsageAddPageComponent,
+    UsageAddFormComponent,
+    DataNotFoundComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
