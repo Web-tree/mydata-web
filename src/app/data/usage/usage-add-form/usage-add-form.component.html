@@ -1,0 +1,21 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <h2>Add usage of data {{dataName | titlecase}}</h2>
+  <mat-form-field>
+    <mat-label>Select usage type</mat-label>
+    <mat-select [formControl]="type">
+      <mat-option value="url">Url</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div *ngIf="this.type.value === 'url'">
+    <mat-form-field>
+      <input [formControl]="url" matInput placeholder="Where is it used?"/>
+    </mat-form-field>
+    <mat-error *ngIf="url.dirty && !url.valid">
+      Please enter valid url.
+      <mat-icon matTooltip="Url should start from https or http. For example, https://webtree.org">help</mat-icon>
+    </mat-error>
+  </div>
+  <div [hidden]="type.value === ''">
+    <button [disabled]="!form.valid || inProgress" mat-stroked-button type="submit">Add</button>
+  </div>
+</form>

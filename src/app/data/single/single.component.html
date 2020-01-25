@@ -63,7 +63,7 @@
           Who use this data?
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <app-usage-add dataName="{{data.name}}"></app-usage-add>
+      <app-usage-add-dialog dataName="{{data.name}}"></app-usage-add-dialog>
       <app-usage-list dataName="{{data.name}}"></app-usage-list>
     </mat-expansion-panel>
     <mat-expansion-panel>
@@ -77,6 +77,4 @@
   </mat-accordion>
 </div>
 
-<div *ngIf="notFound">
-  You don't have data with name {{name}}. <a routerLink="/data/add">Try to create it!</a>
-</div>
+<app-data-not-found *ngIf="notFound"></app-data-not-found>

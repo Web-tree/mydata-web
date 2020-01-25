@@ -1,22 +1,26 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {UsageAddComponent} from './usage-add.component';
+import {UsageAddDialogComponent} from './usage-add-dialog.component';
 import {MatCardModule, MatIconModule, MatInputModule, MatSelectModule, MatSnackBarModule} from '@angular/material';
 import {SatPopoverModule} from '@ncstate/sat-popover';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {UsageService} from '../../../_services/usage.service';
 import {By} from '@angular/platform-browser';
-import {Usage} from '../../../_models/usage';
+import {UsageAddFormComponent} from '../usage-add-form/usage-add-form.component';
+import Spy = jasmine.Spy;
 
-describe('UsageAddComponent', () => {
-  let component: UsageAddComponent;
-  let fixture: ComponentFixture<UsageAddComponent>;
+describe('UsageAddDialogComponent', () => {
+  let component: UsageAddDialogComponent;
+  let fixture: ComponentFixture<UsageAddDialogComponent>;
   let usageService: UsageService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UsageAddComponent],
+      declarations: [
+        UsageAddDialogComponent,
+        UsageAddFormComponent
+      ],
       imports: [
         MatIconModule,
         MatCardModule,
@@ -37,7 +41,7 @@ describe('UsageAddComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UsageAddComponent);
+    fixture = TestBed.createComponent(UsageAddDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -50,7 +54,6 @@ describe('UsageAddComponent', () => {
     beforeEach(() => {
       fixture.debugElement.query(By.css('.open-button')).nativeElement.click();
     });
-
     describe('popup window', () => {
       it('should be visible', () => {
         const popupWindow = fixture.debugElement.query(By.css('.sat-popover-container'));
@@ -61,40 +64,16 @@ describe('UsageAddComponent', () => {
         fixture.debugElement.query(By.css('.sat-popover-container .close-button')).nativeElement.click();
         expect(fixture.debugElement.query(By.css('.sat-popover-container'))).toBeFalsy();
       });
-    });
 
-    describe('and when form was filled', () => {
-      beforeEach(() => {
-        component.type.setValue('url');
-        component.url.setValue('https://github.com');
-        component.dataName = 'a-name';
+      xit('should close window after success call', () => {
+        // @ts-ignore
+        (usageService as Spy).add.and.returnValue(Promise.resolve());
+
+        const submitButton = fixture.debugElement.query(By.css('button[type=submit]'));
+        submitButton.nativeElement.click();
+
         fixture.detectChanges();
-      });
-
-      it('should have valid form', () => {
-        expect(component.form.valid).toBeTruthy();
-      });
-
-      describe('and submitted', () => {
-        it('should call add method on usage service', () => {
-          const submitButton = fixture.debugElement.query(By.css('button[type=submit]'));
-          submitButton.nativeElement.click();
-
-          expect(usageService.add).toHaveBeenCalledWith('a-name', {
-            usageType: 'url',
-            usageValue: 'https://github.com'
-            } as Usage
-          );
-        });
-        xit('should close window after success call', () => {
-          (usageService as any).add.and.returnValue(Promise.resolve());
-
-          const submitButton = fixture.debugElement.query(By.css('button[type=submit]'));
-          submitButton.nativeElement.click();
-
-          fixture.detectChanges();
-          expect(fixture.debugElement.query(By.css('.sat-popover-container'))).toBeFalsy();
-        });
+        expect(fixture.debugElement.query(By.css('.sat-popover-container'))).toBeFalsy();
       });
     });
   });

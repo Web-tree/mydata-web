@@ -1,0 +1,10 @@
+<div *ngIf="!loading">
+  <app-usage-add-form [callback]="backToData()"
+                      [dataName]="dataName"
+                      [dataUsageValue]="dataUsageValue"
+                      [selectedDataType]="usageType"></app-usage-add-form>
+  <app-data-not-found *ngIf="notFound"></app-data-not-found>
+</div>
+<div *ngIf="loading" class="centered">
+  <mat-spinner></mat-spinner>
+</div>

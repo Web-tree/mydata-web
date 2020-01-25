@@ -7,10 +7,12 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {MatCardModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule, MatTabsModule, MatTooltipModule} from '@angular/material';
 import {AlertService} from '../../_services/alert.service';
 import {SatPopoverModule} from '@ncstate/sat-popover';
-import {UsageAddComponent} from '../usage/usage-add/usage-add.component';
+import {UsageAddDialogComponent} from '../usage/usage-add-dialog/usage-add-dialog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {UsageListComponent} from '../usage/usage-list/usage-list.component';
+import {UsageAddFormComponent} from '../usage/usage-add-form/usage-add-form.component';
+import {DataNotFoundComponent} from '../error/data-not-found/data-not-found.component';
 
 describe('SingleComponent', () => {
   let component: SingleComponent;
@@ -20,8 +22,10 @@ describe('SingleComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         SingleComponent,
-        UsageAddComponent,
-        UsageListComponent
+        UsageAddDialogComponent,
+        UsageAddFormComponent,
+        UsageListComponent,
+        DataNotFoundComponent
       ],
       imports: [
         RouterTestingModule,
