@@ -1,0 +1,80 @@
+{
+  "configVersion": 1,
+  "timestamp": 1580157486531,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/favicon.ico",
+        "/index.html",
+        "/main.6a7deede8c5c757a8621.js",
+        "/polyfills-es5.5c229337afc487bf60af.js",
+        "/polyfills.374f5fe0e936f313a3cb.js",
+        "/runtime.a8ef3a8272419c2e2c66.js",
+        "/styles.1f08426d1ffe2c563968.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/ico/android-chrome-192x192.png",
+        "/assets/ico/android-chrome-512x512.png",
+        "/assets/ico/apple-touch-icon.png",
+        "/assets/ico/browserconfig.xml",
+        "/assets/ico/favicon-16x16.png",
+        "/assets/ico/favicon-32x32.png",
+        "/assets/ico/favicon.ico",
+        "/assets/ico/mstile-150x150.png",
+        "/assets/ico/safari-pinned-tab.svg",
+        "/assets/ico/site.webmanifest",
+        "/assets/mydata-logo-0.4-50x50.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/ico/android-chrome-192x192.png": "3e954d587114ee5b8751b222e74d54776aa75721",
+    "/assets/ico/android-chrome-512x512.png": "15c4315ed6937814e1279fe18294ee810b7c72d4",
+    "/assets/ico/apple-touch-icon.png": "60b430e159f3fdac7f66dde74d1d8087eabe98a9",
+    "/assets/ico/browserconfig.xml": "07e53c8c2ac94500025960c9acba2d37605f0c53",
+    "/assets/ico/favicon-16x16.png": "a332b481439a765b407ef5481d775b0d0d9fc7cf",
+    "/assets/ico/favicon-32x32.png": "bfec7e1da5810a9f2f5b90eb8d7e8671708155d4",
+    "/assets/ico/favicon.ico": "3c843f38ddbcf9be6fc9a7c65aa09a83f47bea9c",
+    "/assets/ico/mstile-150x150.png": "6f96d1a7447f83c09e7467c75fd42d6daee25645",
+    "/assets/ico/safari-pinned-tab.svg": "a024b48235df168ff894381e2724969883d657c6",
+    "/assets/ico/site.webmanifest": "11131ba98fcb42e8deaabfec21d5cc69c7a8ee00",
+    "/assets/mydata-logo-0.4-50x50.png": "eca93b37715c08d1cda28869ab79f7a53a0c5c0f",
+    "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "/index.html": "100ddb5baa44b21bd4efa26f57efe6a2c599b569",
+    "/main.6a7deede8c5c757a8621.js": "196da70e452c6717faffe94c35814d09b99b60a8",
+    "/polyfills-es5.5c229337afc487bf60af.js": "17255945d9f9abfe965595653cb9c48a4738d17c",
+    "/polyfills.374f5fe0e936f313a3cb.js": "9184626363d337c09b10a1a74164edbcb4a433e5",
+    "/runtime.a8ef3a8272419c2e2c66.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/styles.1f08426d1ffe2c563968.css": "2fddddc1d19c3db3ba96174ea5c68bdc0c3a0b73"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
