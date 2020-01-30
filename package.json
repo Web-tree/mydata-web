@@ -30,6 +30,7 @@
     "@angular/router": "^8.2.14",
     "@angular/service-worker": "^8.2.14",
     "@ncstate/sat-popover": "^4.0.0",
+    "angular-cli-ghpages": "^0.6.2",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.9.0",
