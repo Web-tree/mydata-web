@@ -39,7 +39,7 @@ describe('AuthService', () => {
       tokenService.saveToken(token);
 
       service.getUser().then();
-      const req = httpMock.expectOne(environment.authUrl + '/rest/checkToken');
+      const req = httpMock.expectOne(environment.authUrlBack + '/checkToken');
       expect(req.request.method).toEqual('POST');
       expect(req.request.body).toEqual(token);
     });
@@ -49,7 +49,7 @@ describe('AuthService', () => {
       const user = {username: 'name'};
 
       const promise = service.getUser();
-      httpMock.expectOne(environment.authUrl + '/rest/checkToken').flush(user);
+      httpMock.expectOne(environment.authUrlBack + '/checkToken').flush(user);
 
       expect(await promise).toEqual(user);
     });

@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   authUrl: 'http://localhost:3000',
+  authUrlBack: 'http://localhost:3000',
   backendUrl: 'https://7prmgags2f.execute-api.eu-central-1.amazonaws.com/dev'
 };
 

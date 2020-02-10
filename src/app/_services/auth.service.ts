@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   getUser(): Promise<User> {
-    return this.http.post(environment.authUrl + '/rest/checkToken', this.tokenService.getToken()).toPromise();
+    return this.http.post(environment.authUrlBack + '/checkToken', this.tokenService.getToken()).toPromise();
   }
 
   isLoggedIn(): boolean {
