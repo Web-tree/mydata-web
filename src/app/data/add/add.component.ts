@@ -12,6 +12,7 @@ import {isNameExists} from '../../_validators/uniq-name.validator';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
+  list: Data[];
   form: FormGroup;
   inProgress = false;
   type: FormControl = new FormControl('', Validators.required);
@@ -39,6 +40,7 @@ export class AddComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.getList().then(data =>  this.list = data);
   }
 
   back() {
@@ -49,10 +51,20 @@ export class AddComponent implements OnInit {
     this.inProgress = true;
     const data = this.form.value;
     data.name = this.getFormattedName();
-    this.dataService.add(data).then(() => {
-      this.alertService.success('Data added successfully');
-      this.router.navigate(['/data/' + data.name]);
-    }).finally(() => this.inProgress = false);
+
+    if(this.list.length > 99){
+
+      this.alertService.error("Sorry, You cannot have more than 100 records!");
+      this.router.navigate(['/data']);
+
+    } else {
+
+      this.dataService.add(data).then(() => {
+        this.alertService.success('Data added successfully');
+        this.router.navigate(['/data/' + data.name]);
+      }).finally(() => this.inProgress = false);
+
+    }
   }
 
   onTypeChange() {
