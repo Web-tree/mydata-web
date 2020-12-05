@@ -28,7 +28,17 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ["Chrome"],
+    browsers: ['ChromeWsl', "Chrome"],
+    customLaunchers: {
+      'ChromeWsl': {
+        base: 'Chrome',
+        flags: [
+          '--disable-gpu',
+          '--no-sandbox',
+        ],
+        debug: true
+      }
+    },
     singleRun: false,
     restartOnFileChange: true,
   });

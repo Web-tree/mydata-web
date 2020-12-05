@@ -6,6 +6,7 @@
     "start": "ng serve --host=127.0.0.1.xip.io",
     "build": "ng build",
     "test": "ng test",
+    "testWsl": "ng test --browsers=ChromeWsl",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
