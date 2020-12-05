@@ -16,6 +16,7 @@ speed-measure-plugin.json
 
 # IDEs and editors
 /.idea/workspace.xml
+/.idea/checkstyle-idea.xml
 .project
 .classpath
 .c9/
