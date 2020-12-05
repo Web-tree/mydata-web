@@ -21,7 +21,12 @@
         </ng-container>
         <ng-container matColumnDef="value">
           <th *matHeaderCellDef mat-header-cell>Value</th>
-          <td *matCellDef="let data" mat-cell>{{data.value}}</td>
+          <td *matCellDef="let data" class="data-cel" mat-cell>
+            <span class="data-value-start">*****</span>
+            <span class="data-value">{{data.value}}</span>
+            <mat-icon (click)="showData($event)" class="data-visibility-toggle data-visibility-toggle-show">visibility</mat-icon>
+            <mat-icon (click)="hideData($event)" class="data-visibility-toggle data-visibility-toggle-hide">visibility_off</mat-icon>
+          </td>
         </ng-container>
         <tr *matHeaderRowDef="columns" mat-header-row></tr>
         <tr *matRowDef="let row; columns: columns;" mat-row></tr>

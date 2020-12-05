@@ -33,4 +33,13 @@ export class ListComponent implements OnInit {
     }
   }
 
+  showData($event: MouseEvent) {
+    // @ts-ignore
+    $event.target.parentElement.classList.add('show-data');
+  }
+
+  hideData($event: MouseEvent) {
+    // @ts-ignore
+    $event.target.parentElement.classList.remove('show-data');
+  }
 }

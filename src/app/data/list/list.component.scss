@@ -13,3 +13,23 @@ table {
 
 .mat-table .mat-cel {
 }
+
+.data-cel {
+  .data-visibility-toggle-show, .data-value-start {
+    display: inherit;
+  }
+
+  .data-visibility-toggle-hide, .data-value {
+    display: none;
+  }
+}
+
+.data-cel.show-data {
+  .data-visibility-toggle-show, .data-value-start {
+    display: none;
+  }
+
+  .data-visibility-toggle-hide, .data-value {
+    display: inherit;
+  }
+}
