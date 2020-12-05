@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Data} from '../../_models/data';
 import {DataService} from '../../_services/data.service';
+import {AuthService} from '../../_services/auth.service';
 
 @Component({
   selector: 'app-list',
@@ -15,15 +16,21 @@ export class ListComponent implements OnInit {
     'value'
   ];
 
+  loggedIn;
+
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private authService: AuthService
   ) {
   }
 
   ngOnInit() {
-    this.dataService
-      .getList()
-      .then(data => this.list = data);
+    this.loggedIn = this.authService.isLoggedIn();
+    if (this.loggedIn) {
+      this.dataService
+        .getList()
+        .then(data => this.list = data);
+    }
   }
 
 }

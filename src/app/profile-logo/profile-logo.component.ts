@@ -10,16 +10,17 @@ import {environment} from '../../environments/environment';
 })
 export class ProfileLogoComponent implements OnInit {
 
-  private user: User = {};
+  user: User = {};
   private username: string;
+
+  shortName: string;
+  loginUrl: string = environment.authUrl + '/login?returnUnion=mydata';
+  registerUrl: string = environment.authUrl + '/register?returnUnion=mydata';
 
   constructor(
     public authService: AuthService
   ) {
   }
-  private shortName: string;
-  private loginUrl: string = environment.authUrl + '/login?returnUnion=mydata';
-  private registerUrl: string = environment.authUrl + '/register?returnUnion=mydata';
 
   static generateShortName(user: User): string {
     return user.username.slice(0, 2).toUpperCase();
