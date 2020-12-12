@@ -52,7 +52,7 @@ export class AddComponent implements OnInit {
   onSubmit() {
     this.inProgress = true;
 
-    if(+this.dataCount > 7) {
+    if(+this.dataCount > 100) {
       this.alertService.success('You cannot have more than 100 records!');
       this.router.navigate(['/data']);
       this.inProgress = false;
