@@ -31,6 +31,7 @@ import {UsageListComponent} from './data/usage/usage-list/usage-list.component';
 import {UsageAddPageComponent} from './data/usage/usage-add-page/usage-add-page.component';
 import {UsageAddFormComponent} from './data/usage/usage-add-form/usage-add-form.component';
 import {DataNotFoundComponent} from './data/error/data-not-found/data-not-found.component';
+import {AboutComponent} from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {DataNotFoundComponent} from './data/error/data-not-found/data-not-found.
     UsageAddPageComponent,
     UsageAddFormComponent,
     DataNotFoundComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
