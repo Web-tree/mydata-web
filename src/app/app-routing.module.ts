@@ -1,19 +1,22 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {ApplyTokenComponent} from './apply-token/apply-token.component';
 import {ListComponent} from './data/list/list.component';
 import {AddComponent} from './data/add/add.component';
 import {SingleComponent} from './data/single/single.component';
 import {NotFoundComponent} from './errors/not-found/not-found.component';
 import {UsageAddPageComponent} from './data/usage/usage-add-page/usage-add-page.component';
+import {AuthGuard} from './_guards/AuthGuard';
+import {AboutComponent} from './components/about/about.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: '/about', pathMatch: 'full'},
+  {path: 'about', component: AboutComponent},
   {path: 'applyToken', component: ApplyTokenComponent},
-  {path: 'data', component: ListComponent},
-  {path: 'data/add', component: AddComponent},
-  {path: 'data/:name', component: SingleComponent},
-  {path: 'data/:data-name/add-usage', component: UsageAddPageComponent},
-  {path: '', redirectTo: '/data', pathMatch: 'full'},
+  {path: 'data', component: ListComponent, canActivate: [AuthGuard]},
+  {path: 'data/add', component: AddComponent, canActivate: [AuthGuard]},
+  {path: 'data/:name', component: SingleComponent, canActivate: [AuthGuard]},
+  {path: 'data/:data-name/add-usage', component: UsageAddPageComponent, canActivate: [AuthGuard]},
   {path: '**', component: NotFoundComponent},
 ];
 
