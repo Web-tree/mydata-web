@@ -28,7 +28,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeWsl', "Chrome"],
+    browsers: ['ChromeWsl'],
     customLaunchers: {
       'ChromeWsl': {
         base: 'Chrome',
