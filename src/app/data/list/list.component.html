@@ -1,6 +1,8 @@
-<div *ngIf="loggedIn">
-  <a class="navigation-button" color="primary" mat-flat-button routerLink="/data/add">Add data</a>
-  <h2>Your data</h2>
+<div *ngIf="loggedIn" >
+  <button [disabled]="dataCount > dataLimit" class="navigation-button" color="primary" mat-flat-button routerLink="/data/add">Add data</button>
+
+  <h2>Your data ({{dataCount}} items)</h2>
+  <h3 *ngIf="dataCount > dataLimit">You cannot have more than 100 data!</h3>
   <div *ngIf="list">
     <div *ngIf="list.length === 0">
       You don't have data yet.

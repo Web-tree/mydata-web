@@ -25,6 +25,10 @@ export class DataService {
     return this.httpClient.get<Data[]>(environment.backendUrl + '/data').toPromise();
   }
 
+  getDataCount(): Promise<number> {
+    return this.httpClient.get<number>(environment.backendUrl + '/data/count').toPromise();
+  }
+
   add(data: Data): Promise<any> {
     return this.httpClient.post(environment.backendUrl + '/data', data).toPromise();
   }

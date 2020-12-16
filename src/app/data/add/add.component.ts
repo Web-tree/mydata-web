@@ -12,6 +12,7 @@ import {isNameExists} from '../../_validators/uniq-name.validator';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
+  dataLimit: number = 100
   form: FormGroup;
   inProgress = false;
   type: FormControl = new FormControl('', Validators.required);
@@ -39,6 +40,10 @@ export class AddComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.getDataCount().then(dataCount => {
+      if(+dataCount > this.dataLimit)
+    this.router.navigate(['/data/']);
+    });
   }
 
   back() {
@@ -52,7 +57,8 @@ export class AddComponent implements OnInit {
     this.dataService.add(data).then(() => {
       this.alertService.success('Data added successfully');
       this.router.navigate(['/data/' + data.name]);
-    }).finally(() => this.inProgress = false);
+    }, () => {this.alertService.error("Sorry, you have exceeded the data limit. You cannot have more than 100 items!")
+    this.router.navigate(['/data/']);}).finally(() => this.inProgress = false);
   }
 
   onTypeChange() {
