@@ -57,7 +57,8 @@ export class AddComponent implements OnInit {
     this.dataService.add(data).then(() => {
       this.alertService.success('Data added successfully');
       this.router.navigate(['/data/' + data.name]);
-    }).finally(() => this.inProgress = false);
+    }, () => {this.alertService.error("Sorry, you have exceeded the data limit. You cannot have more than 100 items!")
+    this.router.navigate(['/data/']);}).finally(() => this.inProgress = false);
   }
 
   onTypeChange() {

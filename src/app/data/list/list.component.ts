@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Data} from '../../_models/data';
 import {DataService} from '../../_services/data.service';
 import {AuthService} from '../../_services/auth.service';
-import {MatTooltipModule} from '@angular/material';
 
 @Component({
   selector: 'app-list',
@@ -28,7 +27,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getDataCount().then(data => this.dataCount = +data);
+    this.dataService.getDataCount().then(data => this.dataCount = data);
     
     this.loggedIn = this.authService.isLoggedIn();
     if (this.loggedIn) {
