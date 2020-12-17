@@ -23,6 +23,16 @@ export class AuthService {
     return this.tokenService.tokenExists();
   }
 
+  isTokenValid(): Promise<boolean> {
+    return this
+      .getUser()
+      .then(() => Promise.resolve(true))
+      .catch(reason => {
+        console.log(reason);
+        return false;
+      });
+  }
+
   logout(): void {
     this.tokenService.removeToken();
   }
