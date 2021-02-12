@@ -12,6 +12,7 @@ import {isNameExists} from '../../_validators/uniq-name.validator';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
+  dataCount: string;
   form: FormGroup;
   inProgress = false;
   type: FormControl = new FormControl('', Validators.required);
@@ -39,6 +40,9 @@ export class AddComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.getCount().then(data => {
+      this.dataCount = data
+    })
   }
 
   back() {
@@ -47,12 +51,19 @@ export class AddComponent implements OnInit {
 
   onSubmit() {
     this.inProgress = true;
-    const data = this.form.value;
-    data.name = this.getFormattedName();
-    this.dataService.add(data).then(() => {
-      this.alertService.success('Data added successfully');
-      this.router.navigate(['/data/' + data.name]);
-    }).finally(() => this.inProgress = false);
+
+    if(+this.dataCount > 100) {
+      this.alertService.success('You cannot have more than 100 records!');
+      this.router.navigate(['/data']);
+      this.inProgress = false;
+    } else {
+      const data = this.form.value;
+      data.name = this.getFormattedName();
+      this.dataService.add(data).then(() => {
+        this.alertService.success('Data added successfully');
+        this.router.navigate(['/data/' + data.name]);
+      }).finally(() => this.inProgress = false);
+    }
   }
 
   onTypeChange() {
